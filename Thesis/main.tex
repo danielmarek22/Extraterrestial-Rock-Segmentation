@@ -467,40 +467,65 @@ Since 2015, deep learning has been widely used in various ways, especially in co
 \section{Motivation and goal of the project}
 The development of fully autonomous lunar and planetary rovers will significantly enhance the speed of space exploration. Sensors and cameras that rovers are equipped with are sufficient for ground control to gain information about the rovers' surroundings. Recent advances in machine learning make it possible to process that information on board the vehicle, enabling autonomous navigation, hazard avoidance and decision-making, skipping the communication process with the control team. To comply with limited rover hardware and power draw, algorithms designed for onboard work must be as compact and efficient as possible. Inspection of the surroundings can be performed with semantic segmentation algorithms, which means assigning a class to every input image pixel. All known extraterrestrial surfaces worth exploring are mostly filled with rocks of different sizes, meaning detecting where rocks are located near the vehicle is crucial for autonomous navigation.
 
-This work focuses on employing a machine learning algorithm based on state-of-the-art approaches to performing semantic segmentation on rocks in images of extraterrestrial landscapes. The main goal is to create an algorithm that is as accurate as possible while remaining compact and efficient. The trade-off between accuracy and compactness is crucial when designing an algorithm for embedded devices, especially considering the constraints of rover hardware design. The training is performed on an artificial lunar landscape dataset using efficient hardware. Inference results of such an algorithm can be later used by other algorithms concerning tasks such as path planning, navigation or detecting objects of interest.
+This work focuses on employing a machine learning algorithm based on state-of-the-art approaches to performing semantic segmentation on rocks in images of extraterrestrial landscapes. The main goal is to create an algorithm that is as accurate as possible while remaining compact and efficient. The trade-off between accuracy and compactness is crucial when designing an algorithm for embedded devices, especially considering the constraints of rover hardware design. The training is performed on an artificial lunar landscape data set using efficient hardware. Inference results of such an algorithm can be later used by other algorithms concerning tasks such as path planning, navigation or detecting objects of interest.
 
 \section{Project overview}
+This work is divided into three main parts: the first part is the theoretical introduction, the second part is the overview of the engineering part, the third part presents the obtained results, and the fourth part contains the conclusion.
+
+
+The theoretical introduction is realised in the first chapter, where the domain is presented, as well as the motivation and how the problem is settled. Here, an outline of related works is presented. The engineering part is illustrated in the second chapter. An in-depth analysis of the methods used is performed, along with the presentation of how data is processed in order to obtain expected results. The results are presented in the third chapter. The chapter is laid out in the following manner: first, the preliminary results are presented, then the results after changing the architecture and what the motivation was, and the final results are presented at the end. The conclusions, general remarks and future work is presented in the final chapter.
 %Tutaj jeszcze nie jestem pewnie co dokładnie opisać, wstępnie o tym że praca ma 3 części - teoretyczne wprowadzenie, wstępne wyniki oraz dokładniejsze wyniki
 
+\section{Related works}
+% @TODO: naprawić kolejność bibliografi
+The importance of using artificial intelligence in space applications is presented in \cite{chien2006future}, as the authors focus on more future missions. How robotics and autonomous systems are currently used in space exploration is reviewed in \cite{gao2017review} and presents the history and future of robotic space missions, focusing on planetary missions. The authors concentrate on the importance of autonomy in these missions. The overview of what goals martian rovers have to achieve and how to use available sensors for autonomous operation is presented in \cite{bajracharya2008autonomy}. A survey of work applicable to autonomous planetary rover navigation is presented in \cite{wong2017adaptive}, where different ongoing challenges and promising future research directions are outlined.
+
+Another work touching on rock segmentation is \cite{kuang2021rock}, where authors present a deep learning algorithm for use in the navigation vision of martian planetary rovers. In this article, the authors present their synthetic data set for segmentation, created using the Katwijk beach planetary rover data set \cite{hewitt2018katwijk}. Although the data used in this work is different, it is suitable as a reference point for comparing the results of obtained algorithms using similar metrics.
+
+Classifying pixels of images obtained by rovers is also presented in \cite{ono2015risk}. In this work, the authors use the random forest machine learning algorithm to perform semantic segmentation of images. Their work focuses on developing the algorithm for path planning and hazard detection in planetary rovers. This project uses images taken by the Curiosity rover, labelled by human experts. The importance of detecting rock in rover vision is highlighted by this work.
+
+An extensive overview of image segmentation using deep learning is performed in \cite{minaee2021image}, providing insight into different aspects of more than 100 segmentation methods, including the training data, loss functions, choice of architecture and key contributions. The review of the most significant state-of-the-art deep learning algorithms presented in this article serves as an entry port for choosing an optimal solution to the problem stated in this thesis. Another work providing deep insight into how to construct algorithms for image segmentation is \cite{ghosh2019understanding}. A paper focused on deep learning segmentation algorithms used in the more constrained environments is \cite{siam2018comparative}. An approach to designing computationally efficient solutions and a benchmarking framework for various algorithms are presented.
+
+The edge computing deep learning algorithms are described in \cite{vestias2020moving}, along with the main research directions. This paper also presents several possible applications, including autonomous driving. A set of techniques used for optimising already existing algorithms in order to move them to the edge is laid down in this paper. A similar paper on how edge computing is \cite{merenda2020edge} focused more on running machine learning algorithms on microcontrollers.
 
 
-====================================================
-\begin{itemize}
-\item introduction into the problem domain
-\item settling of the problem in the domain
-\item objective of the thesis
-\item scope of the thesis
-\item short description of chapters
-\item clear description of contribution of the thesis's author – in case of more authors table with enumeration of contribution of authors
-\end{itemize}
-====================================================
+
+% 1. ogólny zarys autonomi w misjach
+% 2. segmentacji w łazikach
+% 3. algorytmy segmentacji  ogólny zarys tutaj, konkretne enkodery oraz architektury potem
+% 4. zastosowanie ai w embedded
+
+
+% ====================================================
+% \begin{itemize}
+% \item introduction into the problem domain
+% \item settling of the problem in the domain
+% \item objective of the thesis
+% \item scope of the thesis
+% \item short description of chapters
+% \item clear description of contribution of the thesis's author – in case of more authors table with enumeration of contribution of authors
+% \end{itemize}
+% ====================================================
 
 
 \chapter{Task analysis}
 
 \section{Data}
-Deep learning models are trained and tested in this work on an Artificial Lunar Dataset created by Romain Pessia and Genya Ishigami of the Space Robotics Group, Keio University, Japan. This data set contains 9766 images of a photorealistic lunar environment made using the Terragen software. Images and ground truth segmentation masks are provided in files with matching names.
+This work is mainly based on the Artificial Lunar Landscape data set, on which models are trained and assessed. Another data set containing label images for rocks on Mars have been introduced to further evaluate the generalisation ability of obtained algorithms.
+
+\subsection{Artifical lunar landscape}
+Artificial Lunar Dataset was created by Romain Pessia and Genya Ishigami of the Space Robotics Group, Keio University, Japan. This data set contains 9766 images of a photorealistic lunar environment made using the Terragen software. Images and ground truth segmentation masks are provided in files with matching names.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=5.5cm]{dataset_examples/renders/render9679.png}
-    \includegraphics[width=5.5cm]{dataset_examples/ground/ground9679.png}
+    \includegraphics[width=5.5cm]{dataset_examples/Lunar/renders/render9679.png}
+    \includegraphics[width=5.5cm]{dataset_examples/Lunar/ground/ground9679.png}
 
-    \includegraphics[width=5.5cm]{dataset_examples/renders/render9723.png}
-    \includegraphics[width=5.5cm]{dataset_examples/ground/ground9723.png}
+    \includegraphics[width=5.5cm]{dataset_examples/Lunar/renders/render9723.png}
+    \includegraphics[width=5.5cm]{dataset_examples/Lunar/ground/ground9723.png}
 
-    \includegraphics[width=5.5cm]{dataset_examples/renders/render9688.png}
-    \includegraphics[width=5.5cm]{dataset_examples/ground/ground9688.png}
+    \includegraphics[width=5.5cm]{dataset_examples/Lunar/renders/render9688.png}
+    \includegraphics[width=5.5cm]{dataset_examples/Lunar/ground/ground9688.png}
     \caption{Example entries from data set with corresponding segmentation masks}
     \label{fig:data_example1}
 \end{figure}
@@ -509,21 +534,61 @@ The resolution in which images are provided is $720 \times 480$ pixels. There ar
 
 The authors also provide real lunar pictures taken by the Chang'e 3 rover equipped with two cameras to test algorithms trained on this data set. Hand-drew segmentation ground truth is also present for these pictures.
 
-\begin{figure}[h]
+% TODO: naprawić pozycjonowanie tego szitu
+\begin{figure}[!h]
     \centering
-    \includegraphics[width=5.5cm]{dataset_examples/real/PCAM5.png}
-    \includegraphics[width=5.5cm]{dataset_examples/real/g_PCAM5.png}
+    \includegraphics[width=5.5cm]{dataset_examples/Lunar/real/PCAM5.png}
+    \includegraphics[width=5.5cm]{dataset_examples/Lunar/real/g_PCAM5.png}
 
-    \includegraphics[width=5.5cm]{dataset_examples/real/PCAM8.png}
-    \includegraphics[width=5.5cm]{dataset_examples/real/g_PCAM8.png}
+    \includegraphics[width=5.5cm]{dataset_examples/Lunar/real/PCAM8.png}
+    \includegraphics[width=5.5cm]{dataset_examples/Lunar/real/g_PCAM8.png}
 
-    \includegraphics[width=5.5cm]{dataset_examples/real/TCAM14.png}
-    \includegraphics[width=5.5cm]{dataset_examples/real/g_TCAM14.png}
+    \includegraphics[width=5.5cm]{dataset_examples/Lunar/real/TCAM14.png}
+    \includegraphics[width=5.5cm]{dataset_examples/Lunar/real/g_TCAM14.png}
     \caption{Example real lunar images with corresponding segmentation masks}
     \label{fig:data_real_example1}
 \end{figure}
 
-% Tutaj dalej opisać też zbiór MarsData, nie jestem tylko pewien czy już tutaj opisywać jak te dane są przetwarzane ale raczej w późniejszej sekcji dotyczącej samego projektu
+\subsection{Mars Data}
+Mars Data \cite{xiao2021kernel} is a Martian rock segmentation dataset built using unlabeled images provided by NASA/JPL-Caltech. It is currently divided into two sub-datasets: Rock-A and Rock-B, with a total of 405 labelled rock images and more than 20000 rocks. Rock-A is a simpler sub-set, containing a few rocks in one image, while Rock-B is a more challenging sub-set with more abundant rocks in one scene. The authors also provide sets meant for model training and testing using data augmentation. All images are provided in $560 \times 500$ pixels resolution. Ground truth labels for this data set are only provided for binary segmentation, meaning that additional operations need to be performed in order to use this data.
+
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=3cm]{dataset_examples/Martian/Rock-A/image/964_0964ML0042700010403935E01_DXXX.jpg}
+        \includegraphics[width=3cm]{dataset_examples/Martian/Rock-A/ground/964_0964ML0042700010403935E01_DXXX.png}
+
+        \includegraphics[width=3cm]{dataset_examples/Martian/Rock-A/image/cr_116_0116MR0007330070200650E01_DXXX.jpg}
+        \includegraphics[width=3cm]{dataset_examples/Martian/Rock-A/ground/cr_116_0116MR0007330070200650E01_DXXX.png}
+
+        \includegraphics[width=3cm]{dataset_examples/Martian/Rock-A/image/cr_402_0402ML1667000000E1_DXXX.jpg}
+        \includegraphics[width=3cm]{dataset_examples/Martian/Rock-A/ground/cr_402_0402ML1667000000E1_DXXX.png}
+
+        \caption{Rock-A}
+        \label{fig:rocka_martian_example}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=3cm]{dataset_examples/Martian/Rock-B/image/1580_1580ML0080490070604953E01_DXXX.jpg}
+        \includegraphics[width=3cm]{dataset_examples/Martian/Rock-B/ground/1580_1580ML0080490070604953E01_DXXX.png}
+
+
+        \includegraphics[width=3cm]{dataset_examples/Martian/Rock-B/image/cr_114_0114MR0006980120200632E01_DXXX.jpg}
+        \includegraphics[width=3cm]{dataset_examples/Martian/Rock-B/ground/cr_114_0114MR0006980120200632E01_DXXX.png}
+
+        \includegraphics[width=3cm]{dataset_examples/Martian/Rock-B/image/cr_714_0714MR0030410000402694E01_DXXX.jpg}
+        \includegraphics[width=3cm]{dataset_examples/Martian/Rock-B/ground/cr_714_0714MR0030410000402694E01_DXXX.png}
+
+        \caption{Rock-B}
+        \label{fig:rockb_martian_example}
+    \end{subfigure}
+\caption{Examples martian images with corresponding segmentation masks}
+\label{fig:martian_dataset_examples}
+\end{figure}
+
+\section{Tools}
+
 
 % ====================================================
 % \begin{itemize}
