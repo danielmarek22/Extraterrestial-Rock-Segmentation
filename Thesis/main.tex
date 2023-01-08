@@ -488,14 +488,6 @@ An extensive overview of image segmentation using deep learning is performed in 
 
 The edge computing deep learning algorithms are described in \cite{vestias2020moving}, along with the main research directions. This paper also presents several possible applications, including autonomous driving. A set of techniques used for optimising already existing algorithms in order to move them to the edge is laid down in this paper. A similar paper on how edge computing is \cite{merenda2020edge} focused more on running machine learning algorithms on microcontrollers.
 
-
-
-% 1. ogólny zarys autonomi w misjach
-% 2. segmentacji w łazikach
-% 3. algorytmy segmentacji  ogólny zarys tutaj, konkretne enkodery oraz architektury potem
-% 4. zastosowanie ai w embedded
-
-
 % ====================================================
 % \begin{itemize}
 % \item introduction into the problem domain
@@ -588,7 +580,29 @@ Mars Data \cite{xiao2021kernel} is a Martian rock segmentation dataset built usi
 \end{figure}
 
 \section{Tools}
+In this section, the most important tools which were used for data pipeline construction are presented, along with a short description. This presentation consists of modules, languages and platforms used during the execution of the project.
 
+% Nie jestem też pewien co do tych nazw tutaj, dawać texttt czy coś podobnego?
+The language used to write this project in Python. Python is a high-level, general-purpose programming language characterized by a strong emphasis on code readability and indentation, supporting multiple programming paradigms. Thanks to its simplicity and a high number of available modules, Python is widely used for data analysis and machine learning. Available modules, easiness and versatility, are the reasons why this programming language was chosen. Written code was run using the Google Collaboratory ("Colab" for short) development environment. Colab is based on the open-source project Jupyter, allowing for python code execution with the browser while providing access to computing resources such as GPUs. Highly efficient GPUs provided by Colab were crucial for this project, as the training process for deep learning algorithms requires a lot of computing resources. Another platform used for this project is the community edition of Databricks, hosting a database for storing experiment results using the open-source MlFlow platform.
+
+The most important Python modules used in the project are:
+\begin{itemize}
+    \item \texttt{Pandas} is an open-source data analysis and manipulation tool. It offers data structures for fast and flexible tabular data manipulation and tools for reading and writing data between memory and files.
+
+    \item \texttt{NumPy} is an open-source module providing support for large, multi-dimensional arrays and matrices, along with many high-level mathematical functions to operate on these matrices. This module is used in nearly every scientific domain. This project came useful in manipulating images for this work.
+
+    \item \texttt{Matplotlib} is a comprehensive library for creating static, animated and interactive visualizations in Python. In this work, \texttt{matplotlib} was used for creating plots visualizing the obtained results.
+
+    \item \texttt{OpenCV} is a library of programming functions mainly aimed at real-time computer vision. In this project, it is mostly used for manipulating images.
+
+    \item \texttt{TensorFlow} is an open-source library for machine learning and artificial intelligence, available in many programming languages, including Python. It can be used across various tasks but focuses mostly on training and inference of deep neural networks.
+
+    \item \texttt{Keras} is an open-source library that acts as an interface for \texttt{TensorFlow}, designed to enable fast experimentation with deep neural networks.
+
+    \item \texttt{Segmentation models} is a python library with neural networks for image segmentation based on \texttt{Keras} and \texttt{TensorFlow}. This library provides a high-level API with multiple model architectures and backbones.
+
+    \item \texttt{MLflow} is a platform for machine learning development, offering a set of lightweight APIs that can be used with any existing machine learning library. The component mostly used in this project is MLflow Tracking - an API to log models, parameters and results.
+\end{itemize}
 
 % ====================================================
 % \begin{itemize}
