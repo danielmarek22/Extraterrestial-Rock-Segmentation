@@ -80,9 +80,9 @@
 
 
 % If you have a consultant for your thesis, put their name below ...
-\newcommand{\Consultant}{title first name surname}  %  (remove $\langle$ and $\rangle)
+% \newcommand{\Consultant}{title first name surname}  %  (remove $\langle$ and $\rangle)
 % ... else leave the braces empty:
-%\newcommand{\consultant}{} % no consultant
+\newcommand{\consultant}{} % no consultant
 
 % end of thesis customisation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -374,14 +374,14 @@ escapeinside={@*}{*@},%
 
 	{\large{\bfseries \Supervisor}\par}
 
-	{\large{\bfseries \LeftDEPARTMENT\ \Departament}\par}
+	{\large{\bfseries \Departament}\par}
 
 	{\large{\bfseries \Faculty}\par}
 
 	\vfill  \vfill
 
 
-    \printOpiekun{\Consultant}
+    % \printOpiekun{\Consultant}
 
 	\vfill  \vfill
 
@@ -451,40 +451,44 @@ escapeinside={@*}{*@},%
 
 % TODO
 \chapter{Introduction}
-In 1969 during the Apollo 11 mission, humanity reached the Moon for the first time in history. This phenomenal achievement was possible thanks to countless hours of hard work put in by the brightest engineers and scientists of that time. It was proven possible to reach a new world. The last time humans stood on the Moon was during the Apollo 17 mission in 1972. Since the end of the space race, many uncrewed missions have studied the core and surface of the silver globe. In 2017 a new Moon exploration program led by the United States National Aeronautics and Space Administration was launched. This program aims to reestablish a human presence on the Moon, with the long-term goal of creating a permanent base camp and facilitating human missions to Mars.
+In 1969, during the Apollo 11 mission, humanity reached the Moon for the first time in history. This phenomenal achievement was possible thanks to countless hours of hard work put in by the brightest engineers and scientists of that time. It was proven possible to reach a new world. The last time humans stood on the Moon was during the Apollo 17 mission in 1972. Since the end of the space race, many uncrewed missions have studied the core and surface of the silver globe. In 2017, the United States National Aeronautics and Space Administration launched a new Moon exploration program. This program aims to reestablish a human presence on the Moon, with the long-term goal of creating a permanent base camp and facilitating human missions to Mars \cite{smith2020artemis}.
 
-Establishing a human presence on another world is challenging due to cosmic radiation, lack of breathable air, high temperature fluctuations and many environmental hazards. Specialized space exploration vehicles, such as lunar or planetary rovers, are created to work in such harsh conditions. Rovers perform various tasks, including collecting information about the terrain they landed on, collecting soil or rock samples, testing equipment for future missions, or simply sending back photos of their surroundings.  Since rovers are meant to land on celestial bodies far from earth, it is impossible to remotely control them in real time due to the speed of radio signal transmission. Therefore, such machines require full or partial autonomy to operate efficiently. Currently, rovers are only partially autonomous, relying on the ground control team for operation. Achieving significant or full autonomy would result in greater efficiency and performance in completing tasks regarding space exploration.
+Establishing a human presence on another world is challenging due to cosmic radiation, lack of breathable air, high temperature fluctuations and other environmental hazards \cite{Yakubovskiy:2019} \cite{latch2008toxicity}. Specialized space exploration vehicles, such as lunar or planetary rovers, are created to work in such harsh conditions. Rovers perform various tasks, including collecting information about the terrain they landed on, collecting soil or rock samples, testing equipment for future missions, or simply sending back photos of their surroundings \cite{bajracharya2008autonomy}.  Since rovers are meant to land on celestial bodies far from Earth, it is impossible to remotely control them in real-time due to the speed of radio signal transmission. Therefore, such machines require full or partial autonomy to operate efficiently. Currently, rovers are only partially autonomous, relying on the ground control team for operation. Achieving significant or full autonomy would result in greater efficiency and performance in completing tasks regarding space exploration \cite{chien2006future}.
 
-Autonomous tasks performed by exploration rovers could include navigation around terrain, including path planning, hazard detection and objects of interest detection, as well as efficient power consumption, data transfer and positioning for recharging with solar energy. Extreme environmental conditions impose strict regulations on rover design to ensure extended and flawless workings, meaning that all electronic parts are adequately shielded and protected. Due to those limitations, computers controlling all functionality are restricted to microprocessors with limited performance. Software performing all rover functionality while maintaining low power consumption requires high optimisation levels and well-thought-out architecture. Additionally, equipping the robot with autonomy may be problematic for classical algorithms. To overcome these restrictions, machine learning-based algorithms can be employed.
+Autonomous tasks performed by exploration rovers could include navigation around terrain, path planning, hazard detection and objects of interest detection, efficient power consumption, data transfer and positioning for recharging with solar energy. Extreme environmental conditions impose strict regulations on rover design to ensure extended and flawless workings, meaning that all electronic parts are adequately shielded and protected. Due to those limitations, computers controlling all functionality are restricted to microprocessors with limited performance. Software performing all rover functionality while maintaining low power consumption requires high optimisation levels and well-designed architecture. Additionally, equipping the robot with autonomy may be problematic for classic algorithms due to the size and complexity of this issue. To overcome these restrictions, machine learning-based algorithms can be employed \cite{bajracharya2008autonomy}. Because machine learning algorithms are not explicitly programmed to solve given problems but rather learn from the provided data, they can model complex relationships in the outside world. This means that with enough data provided, machine learning algorithms can overcome challenges that are difficult or even impossible for classic algorithms.
 
 % Tutaj nie jestem pewien co do tych dwóch akapitów, na ile rozpisywać się o tej historii i szczegółach.
-In the 20th century, when computers were not as powerful as today, a debate arose on achieving intelligence using computers. The first approach was to use logic and symbolic representation so intelligent systems could reason about the word, known as Symbolic Artificial Intelligence. The second approach was to achieve intelligence through learning, known as the connectionist approach. Due to intellectual traditions and hardware limitations, Symbolic Artificial Intelligence won over the connectionist approach, forcing programmers to write long and complicated programs for every problem they encountered. Solutions based on the connectionist approach emerged again in the early 21st century in the form of deep learning based on neural networks, which were developed back in the 1980s by scientists from different fields inspired by biological brain learning capability. Increased computing resources and available data caused deep learning methods to dominate in accuracy benchmarks around 2012.
+In the 20$^{\rm th}$ century, when computers were not as powerful as today, a debate arose on achieving intelligence using computers. The first approach was to use logic and symbolic representation so intelligent systems could reason about the word, known as Symbolic Artificial Intelligence \cite{kolata1982can}. The second approach was to achieve intelligence through learning, known as the connectionist approach \cite{smolensky1999grammar}. Due to intellectual traditions and hardware limitations, Symbolic Artificial Intelligence won over the connectionist approach, forcing programmers to write long and complicated programs for every problem they encountered. Solutions based on the connectionist approach emerged again in the early 21${\rm st}$ century in the form of deep learning based on neural networks, which were developed back in the 1980s by scientists from different fields inspired by biological brain learning capability. Increased computing resources and available data caused deep learning methods to dominate in accuracy benchmarks around 2012 \cite{krizhevsky2017imagenet}. On 30 September 2012, a convolutional neural network called \emph{AlexNet} achieved a top-5 error of 15.3\% in the ImageNet 2012 Challenge, more than 10.8 percentage points lower than that of the runner-up. The ImageNet \cite{russakovsky2015imagenet} is a visual database designed for visual object recognition software research, containing more than 14 million images classified into more than 20,000 categories.
 
-Since 2015, deep learning has been widely used in various ways, especially in computer vision, as correct classification or detection of objects in photos has begun to surpass an average human's accuracy. Solutions based on deep learning are mostly used in powerful data centres as sophisticated state-of-the-art algorithms are consuming a significant amount of computing resources. The fact that deep learning models are resource expensive to train but efficient with inference led to more extensive use with mobile technologies. A solution called "Edge AI" has been gaining popularity recently. It unlocks a whole new area of machine learning applications, enabling faster inference, lower energy consumption and not requiring connection to powerful servers. This approach can be applied to both computers with less powerful hardware, as well as to microcontrollers. There are numerous machine learning applications in embedded devices, such as smart assistants, self-driving cars, autonomous mobile robots and many more.
-% Tutasj może trochę wrócić do poprzedniego tematu tak aby przejście było nieco bardziej płynne
+Since 2015, deep learning has been widely used in various ways, especially in computer vision, as correct classification or detection of objects in photos has begun to surpass an average human's accuracy. Solutions based on deep learning are mostly used in powerful data centres as sophisticated state-of-the-art algorithms are consuming a significant amount of computing resources. The fact that deep learning models are resource expensive to train but efficient with inference led to more extensive use with mobile technologies. A solution called \emph{Edge AI} has been gaining popularity recently \cite{mahdavinejad2018machine}. It unlocks a whole new area of machine learning applications, enabling faster inference, lower energy consumption and not requiring connection to powerful servers. This approach can be applied to both computers with less powerful hardware, as well as to microcontrollers. There are numerous machine learning applications in embedded devices, such as smart assistants, self-driving cars, autonomous mobile robots and many more \cite{merenda2020edge}.
+
 
 
 \section{Motivation and goal of the project}
-The development of fully autonomous lunar and planetary rovers will significantly enhance the speed of space exploration. Sensors and cameras that rovers are equipped with are sufficient for ground control to gain information about the rovers' surroundings. Recent advances in machine learning make it possible to process that information on board the vehicle, enabling autonomous navigation, hazard avoidance and decision-making, skipping the communication process with the control team. To comply with limited rover hardware and power draw, algorithms designed for onboard work must be as compact and efficient as possible. Inspection of the surroundings can be performed with semantic segmentation algorithms, which means assigning a class to every input image pixel. All known extraterrestrial surfaces worth exploring are mostly filled with rocks of different sizes, meaning detecting where rocks are located near the vehicle is crucial for autonomous navigation.
+The development of fully autonomous lunar and planetary rovers will significantly enhance the speed of space exploration \cite{bajracharya2008autonomy}. Sensors and cameras that rovers are equipped with are sufficient for ground control to gain information about the rovers' surroundings. Recent advances in machine learning make it possible to process that information on board the vehicle \cite{vitulli2022chime}, enabling autonomous navigation, hazard avoidance and decision-making, skipping the communication process with the control team. To comply with limited rover hardware and power draw, algorithms designed for onboard work must be as compact and efficient as possible. Inspection of the surroundings can be performed with semantic segmentation algorithms, which means assigning a class to every input image pixel. All known extraterrestrial surfaces worth exploring are mostly filled with rocks of different sizes, meaning that the detection where rocks are located near the vehicle is crucial for autonomous navigation \cite{7119022}.
 
-This work focuses on employing a machine learning algorithm based on state-of-the-art approaches to performing semantic segmentation on rocks in images of extraterrestrial landscapes. The main goal is to create an algorithm that is as accurate as possible while remaining compact and efficient. The trade-off between accuracy and compactness is crucial when designing an algorithm for embedded devices, especially considering the constraints of rover hardware design. The training is performed on an artificial lunar landscape data set using efficient hardware. Inference results of such an algorithm can be later used by other algorithms concerning tasks such as path planning, navigation or detecting objects of interest.
+This work focuses on employing a machine learning algorithm based on state-of-the-art approaches to performing semantic segmentation of rocks in images of extraterrestrial landscapes. The main goal is to create an algorithm that is as accurate as possible while remaining compact and efficient. The trade-off between accuracy and compactness is crucial when designing an algorithm for embedded devices, especially considering the constraints of rover hardware design. The segmentation approaches shall be thoroughly validated over an artificial lunar landscape data set, and their functional and non-functional capabilities shall be explored. The training is performed on an artificial lunar landscape data set using efficient hardware. It is of note that the inference results of such an algorithm can be later used by other algorithms in practical scenarios such as path planning, navigation or detecting objects of interest \cite{7119022}.
 
 \section{Project overview}
-This work is divided into three main parts: the first part is the theoretical introduction, the second part is the overview of the engineering part, the third part presents the obtained results, and the fourth part contains the conclusion.
+This work is divided into four main parts: the first part is the theoretical introduction, the second part is the overview of the engineering part, whereas the third part presents the obtained results, and the fourth part contains the conclusion.
 
 
-The theoretical introduction is realised in the first chapter, where the domain is presented, as well as the motivation and how the problem is settled. Here, an outline of related works is presented. The engineering part is illustrated in the second chapter. An in-depth analysis of the methods used is performed, along with the presentation of how data is processed in order to obtain expected results. The results are presented in the third chapter. The chapter is laid out in the following manner: first, the preliminary results are presented, then the results after changing the architecture and what the motivation was, and the final results are presented at the end. The conclusions, general remarks and future work is presented in the final chapter.
-%Tutaj jeszcze nie jestem pewnie co dokładnie opisać, wstępnie o tym że praca ma 3 części - teoretyczne wprowadzenie, wstępne wyniki oraz dokładniejsze wyniki
+The theoretical introduction is realised in Chapter 1, where the domain is presented, as well as the motivation and how the problem is settled. Here, an outline of related works is presented. The engineering part is illustrated in Chapter 2. An in-depth analysis of the methods used is performed, along with presenting how data is processed in the process chain. The results are presented in Chapter 3. Section 3.1 shows the preliminary results, and the results of algorithms better suited for this task are presented in Section 3.2. Section 3.3 shows the final results of algorithms suited for embedded devices. The conclusions, general remarks and future work is presented in Chapter 4.
 
-\section{Related works}
+\section{Related literature}
 % @TODO: naprawić kolejność bibliografi
-The importance of using artificial intelligence in space applications is presented in \cite{chien2006future}, as the authors focus on more future missions. How robotics and autonomous systems are currently used in space exploration is reviewed in \cite{gao2017review} and presents the history and future of robotic space missions, focusing on planetary missions. The authors concentrate on the importance of autonomy in these missions. The overview of what goals martian rovers have to achieve and how to use available sensors for autonomous operation is presented in \cite{bajracharya2008autonomy}. A survey of work applicable to autonomous planetary rover navigation is presented in \cite{wong2017adaptive}, where different ongoing challenges and promising future research directions are outlined.
 
-Another work touching on rock segmentation is \cite{kuang2021rock}, where authors present a deep learning algorithm for use in the navigation vision of martian planetary rovers. In this article, the authors present their synthetic data set for segmentation, created using the Katwijk beach planetary rover data set \cite{hewitt2018katwijk}. Although the data used in this work is different, it is suitable as a reference point for comparing the results of obtained algorithms using similar metrics.
+% Nie jestem pewien tego zdania, trochę dziwnie brzmi
+This section is focused on previous works related to the problems domain. To fully understand the domain, the exploration of related work touches on papers from both the subjects of space exploration and machine learning.
 
-Classifying pixels of images obtained by rovers is also presented in \cite{ono2015risk}. In this work, the authors use the random forest machine learning algorithm to perform semantic segmentation of images. Their work focuses on developing the algorithm for path planning and hazard detection in planetary rovers. This project uses images taken by the Curiosity rover, labelled by human experts. The importance of detecting rock in rover vision is highlighted by this work.
+The importance of using artificial intelligence in space applications is presented in \cite{chien2006future}, where the authors put more emphasis on future missions, highlighting how important the approach used in this project is. How robotics and autonomous systems are currently used in space exploration is reviewed in \cite{gao2017review} and presents the history and future of robotic space missions, focusing on planetary missions. Gao and Chien concentrate on the importance of autonomy in these missions and show that it is crucial for efficient space exploration. The overview of how autonomy can be achieved with data from sensors on martian rovers is presented in \cite{bajracharya2008autonomy}. Bajracharya et al. highlight how rovers are constructed, what conditions they have to withstand and what tasks they perform. They also predict how planetary exploration vehicles might look in the future.
+ A survey of work applicable to autonomous planetary rover navigation is presented in \cite{wong2017adaptive}, where different ongoing challenges and promising future research directions are outlined. They encompass, among others, the challenges regarding path planning, obstacle avoidance and terrain traversability analysis.
 
-An extensive overview of image segmentation using deep learning is performed in \cite{minaee2021image}, providing insight into different aspects of more than 100 segmentation methods, including the training data, loss functions, choice of architecture and key contributions. The review of the most significant state-of-the-art deep learning algorithms presented in this article serves as an entry port for choosing an optimal solution to the problem stated in this thesis. Another work providing deep insight into how to construct algorithms for image segmentation is \cite{ghosh2019understanding}. A paper focused on deep learning segmentation algorithms used in the more constrained environments is \cite{siam2018comparative}. An approach to designing computationally efficient solutions and a benchmarking framework for various algorithms are presented.
+Another work touching on rock segmentation is \cite{kuang2021rock}, where authors present a deep learning algorithm for use in the navigation vision of the martian planetary rovers. In this article, the authors present their synthetic data set for binary segmentation, created using the Katwijk beach planetary rover data set \cite{hewitt2018katwijk}. Although the data used in this work is different, it is suitable as a reference point for comparing the results of obtained algorithms using similar metrics. The algorithm proposed by the authors is called \emph{NI-U-Net++} and is based on the state-of-the-art \emph{U-Net++} and \emph{NI-U-Net} algorithms. Although the algorithm achieves remarkable results, the authors empathise that it requires optimization to fit the onboard device of a planetary rover.
+
+Classifying pixels of images obtained by rovers is also presented in \cite{ono2015risk}. In this work, the authors use the random forest machine learning algorithm to perform semantic segmentation of images. To provide texture information and allow the system to capture statistical properties of the local context, a set of channels is derived from the original images as a basis for feature extraction. Their work focuses on developing the algorithm for path planning and hazard detection in planetary rovers. This project uses images taken by the Curiosity rover, labelled by human experts. This work highlights the importance of detecting rock in rover vision.
+
+An extensive overview of image segmentation using deep learning is performed in \cite{minaee2021image}, providing insight into different aspects of more than 100 segmentation methods, including the training data, loss functions, choice of architecture and key contributions. The review of the most significant state-of-the-art deep learning algorithms presented in this article serves as an entry port for choosing an optimal solution to the problem stated in this thesis. Deep insight into how to construct algorithms for image segmentation was presented by \cite{ghosh2019understanding}. In \cite{siam2018comparative}, the authors focused on deep learning segmentation algorithms used in more constrained environments. An approach to designing computationally efficient solutions and a benchmarking framework for various algorithms are presented.
 
 The edge computing deep learning algorithms are described in \cite{vestias2020moving}, along with the main research directions. This paper also presents several possible applications, including autonomous driving. A set of techniques used for optimising already existing algorithms in order to move them to the edge is laid down in this paper. A similar paper on how edge computing is \cite{merenda2020edge} focused more on running machine learning algorithms on microcontrollers.
 
@@ -508,7 +512,7 @@ This work is mainly based on the Artificial Lunar Landscape data set, on which m
 \subsection{Artifical lunar landscape}
 Artificial Lunar Dataset was created by Romain Pessia and Genya Ishigami of the Space Robotics Group, Keio University, Japan. This data set contains 9766 images of a photorealistic lunar environment made using the Terragen software. Images and ground truth segmentation masks are provided in files with matching names.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=5.5cm]{dataset_examples/Lunar/renders/render9679.png}
     \includegraphics[width=5.5cm]{dataset_examples/Lunar/ground/ground9679.png}
@@ -527,7 +531,7 @@ The resolution in which images are provided is $720 \times 480$ pixels. There ar
 The authors also provide real lunar pictures taken by the Chang'e 3 rover equipped with two cameras to test algorithms trained on this data set. Hand-drew segmentation ground truth is also present for these pictures.
 
 % TODO: naprawić pozycjonowanie tego szitu
-\begin{figure}[!h]
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=5.5cm]{dataset_examples/Lunar/real/PCAM5.png}
     \includegraphics[width=5.5cm]{dataset_examples/Lunar/real/g_PCAM5.png}
@@ -548,6 +552,7 @@ Mars Data \cite{xiao2021kernel} is a Martian rock segmentation dataset built usi
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \centering
+        \caption{Rock-A}
         \includegraphics[width=3cm]{dataset_examples/Martian/Rock-A/image/964_0964ML0042700010403935E01_DXXX.jpg}
         \includegraphics[width=3cm]{dataset_examples/Martian/Rock-A/ground/964_0964ML0042700010403935E01_DXXX.png}
 
@@ -557,11 +562,12 @@ Mars Data \cite{xiao2021kernel} is a Martian rock segmentation dataset built usi
         \includegraphics[width=3cm]{dataset_examples/Martian/Rock-A/image/cr_402_0402ML1667000000E1_DXXX.jpg}
         \includegraphics[width=3cm]{dataset_examples/Martian/Rock-A/ground/cr_402_0402ML1667000000E1_DXXX.png}
 
-        \caption{Rock-A}
+
         \label{fig:rocka_martian_example}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \centering
+        \caption{Rock-B}
         \includegraphics[width=3cm]{dataset_examples/Martian/Rock-B/image/1580_1580ML0080490070604953E01_DXXX.jpg}
         \includegraphics[width=3cm]{dataset_examples/Martian/Rock-B/ground/1580_1580ML0080490070604953E01_DXXX.png}
 
@@ -572,7 +578,7 @@ Mars Data \cite{xiao2021kernel} is a Martian rock segmentation dataset built usi
         \includegraphics[width=3cm]{dataset_examples/Martian/Rock-B/image/cr_714_0714MR0030410000402694E01_DXXX.jpg}
         \includegraphics[width=3cm]{dataset_examples/Martian/Rock-B/ground/cr_714_0714MR0030410000402694E01_DXXX.png}
 
-        \caption{Rock-B}
+
         \label{fig:rockb_martian_example}
     \end{subfigure}
 \caption{Examples martian images with corresponding segmentation masks}
@@ -603,6 +609,28 @@ The most important Python modules used in the project are:
 
     \item \texttt{MLflow} is a platform for machine learning development, offering a set of lightweight APIs that can be used with any existing machine learning library. The component mostly used in this project is MLflow Tracking - an API to log models, parameters and results.
 \end{itemize}
+
+\section{Image Segmentation}
+The problem of image segmentation has been inseparable from the field of computer vision since the early days, as it is an essential component of visual understanding systems. It involves partitioning images into multiple images and segments and has multiple applications, including medical image analysis, augmented reality and autonomous vehicles.
+
+Image segmentation can be formulated as a problem of assigning every pixel of an input image to a semantic label semantic segmentation) or partitioning of individual objects (instance segmentation). It is generally more demanding than image classification, which predicts a single label for the entire image. Different image segmentation algorithms have been proposed in the literature, with the earliest methods being thresholding \cite{otsu1979threshold}, region-growing \cite{nock2004statistical}, k-mean clustering \cite{dhanachandra2015image} to more sophisticated methods such as active contours \cite{kass1988snakes}, conditional and Markov random fields \cite{plath2009multi}, and sparsity-based methods \cite{starck2005image}. A paradigm shift in the field has been caused by deep learning models, raising a new generation of segmentation models with unprecedented performance improvements, achieving the highest accuracy rates on popular benchmarks.
+
+%Tutaj ogólnie spoko by było dodać jakieś wizualizacje - zapytać czy w końcu można się odnosić do rysunków z innych prac czy nie
+Most image segmentation algorithms are built using the Convolutional Neural Networks (CNNs) architecture, widely used for computer vision problems. CNNs architectures usually consist of three types of layers: convolutional layers, where a kernel of weights is convoluted for feature extraction; pooling layers which reduce the spatial resolution by replacing small neighbourhoods in a feature mas with statistical information about those neighbourhoods and nonlinear layers; which apply an activation function to feature maps, enabling the network to model nonlinear functions. The layers are stacked to form multiresolution pyramids, where the high-level layers learn features from increasingly wider receptive fields. The main advantage over fully-connected neural networks is that all the receptive fields in a layer share weights, resulting in a significantly smaller number of parameters.
+
+
+Other important architectures for image segmentation are Encoder-Decoder and Auto-Encoder models. Encoder-decoder models learn to represent input data points to output using a two-stage network. The encoder part compresses the input $x$ into a latent space representation $z$, performing an encoding function $z = g(x)$. The decoder part predicts the output $y$ on the basis of latent representation $z$, performing a decoding operation $y = f(z)$. The latent space represents the semantic information of the input useful in predicting the output. Such models are popular for sequence-to-sequence modelling in Natural Language Processing and image-to-image translation in applications where the output is an improved version of the input image or a segmentation map. Autoencoders are a special case of encoder-decoder models where the input and output are the same.
+
+Some of the deep learning architectures used for semantic segmentation are: % Tutaj może być coś więcej ale na ten moment nie mam pomysłu
+\begin{itemize}
+    % Tutaj może też by się dało coś jeszcze napisać
+    % dodatkowo możnaby podkreślić nieco nazwę tych architektur ale nie mam pomysłu jak na ten moment
+    \item Fully Convolutional Models (FCNs), proposed by Long \textit{et al.} \cite{long2015fully}, are made out of only convolutional layers, enabling the output segmentation maps to be the same size as the input image. FCNs can achieve state-of-the-art performance but are computationally too expensive for real-time inference.
+
+    \item Encoder-decoder architecture, used by some of the most popular deep learning-based algorithms. Semantic segmentation based on deconvolution was introduced by Noh \textit{et al.} in \cite{noh2015learning}, where a model is made up of two parts, an encoder using convolutional layers adopted from the VGG network and a deconvolutional network that generates class predictions for every pixel of the input image. The limitation of this architecture is that the fine-grained image information is lost during the encoding process. This issue was addressed in later models, which maintain the resolution by connecting the convolution streams in parallel and repeatedly exchanging information across resolutions.
+    % Tutaj dalej opisać jeszcze o Unecie oraz pozostałych architekturach
+\end{itemize}
+
 
 % ====================================================
 % \begin{itemize}
