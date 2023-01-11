@@ -70,7 +70,7 @@
 % TODO
 \newcommand{\Firstnames}{Daniel Bartosz}
 \newcommand{\Surname}{Marek}
-\newcommand{\Supervisor}{Jakub Nalepa PhD. DSc.}  % supervisor (remove $\langle$ and $\rangle)
+\newcommand{\Supervisor}{Jakub Nalepa, PhD, DSc}  % supervisor (remove $\langle$ and $\rangle)
 \newcommand{\Title}{Extraterrestrial rock segmentation using machine learning}
 \newcommand{\TitleAlt}{Segmentacja skał pozaziemskich z wykorzystaniem uczenia maszynowego}
 \newcommand{\Program}{Informatics}
@@ -451,6 +451,7 @@ escapeinside={@*}{*@},%
 
 % TODO
 \chapter{Introduction}
+\label{sec:chapter1}
 In 1969, during the Apollo 11 mission, humanity reached the Moon for the first time in history. This phenomenal achievement was possible thanks to countless hours of hard work put in by the brightest engineers and scientists of that time. It was proven possible to reach a new world. The last time humans stood on the Moon was during the Apollo 17 mission in 1972. Since the end of the space race, many uncrewed missions have studied the core and surface of the silver globe. In 2017, the United States National Aeronautics and Space Administration launched a new Moon exploration program. This program aims to reestablish a human presence on the Moon, with the long-term goal of creating a permanent base camp and facilitating human missions to Mars \cite{smith2020artemis}.
 
 Establishing a human presence on another world is challenging due to cosmic radiation, lack of breathable air, high temperature fluctuations and other environmental hazards \cite{Yakubovskiy:2019} \cite{latch2008toxicity}. Specialized space exploration vehicles, such as lunar or planetary rovers, are created to work in such harsh conditions. Rovers perform various tasks, including collecting information about the terrain they landed on, collecting soil or rock samples, testing equipment for future missions, or simply sending back photos of their surroundings \cite{bajracharya2008autonomy}.  Since rovers are meant to land on celestial bodies far from Earth, it is impossible to remotely control them in real-time due to the speed of radio signal transmission. Therefore, such machines require full or partial autonomy to operate efficiently. Currently, rovers are only partially autonomous, relying on the ground control team for operation. Achieving significant or full autonomy would result in greater efficiency and performance in completing tasks regarding space exploration \cite{chien2006future}.
@@ -465,32 +466,37 @@ Since 2015, deep learning has been widely used in various ways, especially in co
 
 
 \section{Motivation and goal of the project}
-The development of fully autonomous lunar and planetary rovers will significantly enhance the speed of space exploration \cite{bajracharya2008autonomy}. Sensors and cameras that rovers are equipped with are sufficient for ground control to gain information about the rovers' surroundings. Recent advances in machine learning make it possible to process that information on board the vehicle \cite{vitulli2022chime}, enabling autonomous navigation, hazard avoidance and decision-making, skipping the communication process with the control team. To comply with limited rover hardware and power draw, algorithms designed for onboard work must be as compact and efficient as possible. Inspection of the surroundings can be performed with semantic segmentation algorithms, which means assigning a class to every input image pixel. All known extraterrestrial surfaces worth exploring are mostly filled with rocks of different sizes, meaning that the detection where rocks are located near the vehicle is crucial for autonomous navigation \cite{7119022}.
+\label{sec:chapter1.1}
+The development of fully autonomous lunar and planetary rovers will significantly enhance the speed of space exploration \cite{bajracharya2008autonomy}. Sensors and cameras that rovers are equipped with are sufficient for ground control to gain information about the rovers' surroundings. Recent advances in machine learning make it possible to process that information on board the vehicle \cite{vitulli2022chime}, enabling autonomous navigation, hazard avoidance and decision-making, skipping the communication process with the control team. To comply with limited rover hardware and power draw, algorithms designed for onboard processing must be as compact and efficient as possible. Inspecting the surroundings can be performed with semantic segmentation algorithms, which assign a class for every input image pixel. All known extraterrestrial surfaces worth exploring are mostly filled with rocks of different sizes, meaning that detecting where rocks are located near the vehicle is crucial for autonomous navigation \cite{7119022}.
 
-This work focuses on employing a machine learning algorithm based on state-of-the-art approaches to performing semantic segmentation of rocks in images of extraterrestrial landscapes. The main goal is to create an algorithm that is as accurate as possible while remaining compact and efficient. The trade-off between accuracy and compactness is crucial when designing an algorithm for embedded devices, especially considering the constraints of rover hardware design. The segmentation approaches shall be thoroughly validated over an artificial lunar landscape data set, and their functional and non-functional capabilities shall be explored. The training is performed on an artificial lunar landscape data set using efficient hardware. It is of note that the inference results of such an algorithm can be later used by other algorithms in practical scenarios such as path planning, navigation or detecting objects of interest \cite{7119022}.
+This work focuses on employing a machine learning algorithm based on state-of-the-art approaches to performing semantic segmentation of rocks in images of extraterrestrial landscapes. The main goal is to create an algorithm that is as accurate as possible while remaining compact and efficient. The trade-off between accuracy and compactness is crucial when designing an algorithm for embedded devices, especially considering the constraints of rover hardware design. The segmentation approaches shall be thoroughly validated over an artificial lunar landscape data set, and their functional and non-functional capabilities shall be explored. The training is to be performed on an artificial lunar landscape data set using efficient hardware equipped with a graphics processing unit. It is of note that the inference results of such an algorithm can be later used by other techniques in practical scenarios such as path planning, navigation or detecting objects of interest \cite{7119022}.
 
 \section{Project overview}
+\label{sec:chapter1.2}
 This work is divided into four main parts: the first part is the theoretical introduction, the second part is the overview of the engineering part, whereas the third part presents the obtained results, and the fourth part contains the conclusion.
 
-
-The theoretical introduction is realised in Chapter 1, where the domain is presented, as well as the motivation and how the problem is settled. Here, an outline of related works is presented. The engineering part is illustrated in Chapter 2. An in-depth analysis of the methods used is performed, along with presenting how data is processed in the process chain. The results are presented in Chapter 3. Section 3.1 shows the preliminary results, and the results of algorithms better suited for this task are presented in Section 3.2. Section 3.3 shows the final results of algorithms suited for embedded devices. The conclusions, general remarks and future work is presented in Chapter 4.
+% TODO: tutaj dokończyć odnośniki jak reszta sekcji będzie gotowa
+The theoretical introduction is realised in Chapter \ref{sec:chapter1}, where the domain is presented, as well as the motivation and how the problem is settled. Here, an outline of related works is presented. The engineering part is illustrated in Chapter \ref{sec:chapter2}. An in-depth analysis of the methods used is performed, along with presenting how data is processed in the process chain. The results are presented in Chapter 3. Section 3.1 shows the preliminary results, and the results of algorithms better suited for this task are presented in Section 3.2. Section 3.3 shows the final results of algorithms suited for embedded devices. The conclusions, general remarks and future work is presented in Chapter 4.
 
 \section{Related literature}
+\label{sef:chapter1.3}
 % @TODO: naprawić kolejność bibliografi
 
 % Nie jestem pewien tego zdania, trochę dziwnie brzmi
 This section is focused on previous works related to the problems domain. To fully understand the domain, the exploration of related work touches on papers from both the subjects of space exploration and machine learning.
 
-The importance of using artificial intelligence in space applications is presented in \cite{chien2006future}, where the authors put more emphasis on future missions, highlighting how important the approach used in this project is. How robotics and autonomous systems are currently used in space exploration is reviewed in \cite{gao2017review} and presents the history and future of robotic space missions, focusing on planetary missions. Gao and Chien concentrate on the importance of autonomy in these missions and show that it is crucial for efficient space exploration. The overview of how autonomy can be achieved with data from sensors on martian rovers is presented in \cite{bajracharya2008autonomy}. Bajracharya et al. highlight how rovers are constructed, what conditions they have to withstand and what tasks they perform. They also predict how planetary exploration vehicles might look in the future.
+The importance of using artificial intelligence in space applications is presented in \cite{chien2006future}, where the authors put more emphasis on future missions, highlighting how important the approach used in this project is. How robotics and autonomous systems are currently used in space exploration is also reviewed in \cite{gao2017review}, this paper presents the history and future of robotic space missions, focusing on planetary missions. Gao and Chien concentrate on the importance of autonomy in these missions and show that it is crucial for efficient space exploration. The overview of how autonomy can be achieved with data from sensors on Martian rovers is presented in \cite{bajracharya2008autonomy}. Bajracharya et al. highlight how rovers are constructed, what conditions they have to withstand and what tasks they perform. They also predict how planetary exploration vehicles might look in the future.
  A survey of work applicable to autonomous planetary rover navigation is presented in \cite{wong2017adaptive}, where different ongoing challenges and promising future research directions are outlined. They encompass, among others, the challenges regarding path planning, obstacle avoidance and terrain traversability analysis.
 
-Another work touching on rock segmentation is \cite{kuang2021rock}, where authors present a deep learning algorithm for use in the navigation vision of the martian planetary rovers. In this article, the authors present their synthetic data set for binary segmentation, created using the Katwijk beach planetary rover data set \cite{hewitt2018katwijk}. Although the data used in this work is different, it is suitable as a reference point for comparing the results of obtained algorithms using similar metrics. The algorithm proposed by the authors is called \emph{NI-U-Net++} and is based on the state-of-the-art \emph{U-Net++} and \emph{NI-U-Net} algorithms. Although the algorithm achieves remarkable results, the authors empathise that it requires optimization to fit the onboard device of a planetary rover.
+Another work touching on rock segmentation is \cite{kuang2021rock}, where authors present a deep learning algorithm for use in the navigation vision of the Martian planetary rovers. In this article, the authors present their synthetic data set for binary segmentation, created using the Katwijk beach planetary rover data set \cite{hewitt2018katwijk}. Although the data used in this work is different, it is suitable as a reference point for comparing the results of obtained algorithms using similar metrics. The algorithm proposed by the authors is called \textbf{NI-U-Net++} and is based on the state-of-the-art \textbf{U-Net++} and \textbf{NI-U-Net} algorithms. Although the algorithm achieves remarkable results, the authors emphasize that it requires optimization to fit the onboard device of a planetary rover.
 
-Classifying pixels of images obtained by rovers is also presented in \cite{ono2015risk}. In this work, the authors use the random forest machine learning algorithm to perform semantic segmentation of images. To provide texture information and allow the system to capture statistical properties of the local context, a set of channels is derived from the original images as a basis for feature extraction. Their work focuses on developing the algorithm for path planning and hazard detection in planetary rovers. This project uses images taken by the Curiosity rover, labelled by human experts. This work highlights the importance of detecting rock in rover vision.
+Classifying pixels of images obtained by rovers is also presented in \cite{ono2015risk}. In this work, the authors use the random forest machine learning algorithm to perform semantic segmentation of images. To provide texture information and allow the system to capture statistical properties of the local context, a set of channels is derived from the original images as a basis for feature extraction. Their work focuses on developing the algorithm for path planning and hazard detection in planetary rovers. This project uses images taken by the Curiosity rover, labelled by human experts, highlighting the importance of detecting rock in rover vision.
 
 An extensive overview of image segmentation using deep learning is performed in \cite{minaee2021image}, providing insight into different aspects of more than 100 segmentation methods, including the training data, loss functions, choice of architecture and key contributions. The review of the most significant state-of-the-art deep learning algorithms presented in this article serves as an entry port for choosing an optimal solution to the problem stated in this thesis. Deep insight into how to construct algorithms for image segmentation was presented by \cite{ghosh2019understanding}. In \cite{siam2018comparative}, the authors focused on deep learning segmentation algorithms used in more constrained environments. An approach to designing computationally efficient solutions and a benchmarking framework for various algorithms are presented.
 
 The edge computing deep learning algorithms are described in \cite{vestias2020moving}, along with the main research directions. This paper also presents several possible applications, including autonomous driving. A set of techniques used for optimising already existing algorithms in order to move them to the edge is laid down in this paper. A similar paper on how edge computing is \cite{merenda2020edge} focused more on running machine learning algorithms on microcontrollers.
+
+Considering all of the listed sources, an image arises of the current space exploration problems and how they can be solved using recently developed state-of-the-art machine learning algorithms. A key aspect of fitting artificial intelligence models to embedded devices is described in the sources mentioned above, presenting a promising direction for current and future research.
 
 % ====================================================
 % \begin{itemize}
@@ -505,11 +511,14 @@ The edge computing deep learning algorithms are described in \cite{vestias2020mo
 
 
 \chapter{Task analysis}
+\label{sec:chapter2}
 
 \section{Data}
+\label{sec:chapter2.1}
 This work is mainly based on the Artificial Lunar Landscape data set, on which models are trained and assessed. Another data set containing label images for rocks on Mars have been introduced to further evaluate the generalisation ability of obtained algorithms.
 
 \subsection{Artifical lunar landscape}
+\label{sec:chapter2.1.1}
 Artificial Lunar Dataset was created by Romain Pessia and Genya Ishigami of the Space Robotics Group, Keio University, Japan. This data set contains 9766 images of a photorealistic lunar environment made using the Terragen software. Images and ground truth segmentation masks are provided in files with matching names.
 
 \begin{figure}[ht!]
@@ -530,7 +539,7 @@ The resolution in which images are provided is $720 \times 480$ pixels. There ar
 
 The authors also provide real lunar pictures taken by the Chang'e 3 rover equipped with two cameras to test algorithms trained on this data set. Hand-drew segmentation ground truth is also present for these pictures.
 
-% TODO: naprawić pozycjonowanie tego szitu
+% TODO: naprawić pozycjonowanie tego
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=5.5cm]{dataset_examples/Lunar/real/PCAM5.png}
@@ -546,6 +555,7 @@ The authors also provide real lunar pictures taken by the Chang'e 3 rover equipp
 \end{figure}
 
 \subsection{Mars Data}
+\label{sec:chapter2.1.2}
 Mars Data \cite{xiao2021kernel} is a Martian rock segmentation dataset built using unlabeled images provided by NASA/JPL-Caltech. It is currently divided into two sub-datasets: Rock-A and Rock-B, with a total of 405 labelled rock images and more than 20000 rocks. Rock-A is a simpler sub-set, containing a few rocks in one image, while Rock-B is a more challenging sub-set with more abundant rocks in one scene. The authors also provide sets meant for model training and testing using data augmentation. All images are provided in $560 \times 500$ pixels resolution. Ground truth labels for this data set are only provided for binary segmentation, meaning that additional operations need to be performed in order to use this data.
 
 \begin{figure}[!h]
@@ -581,11 +591,12 @@ Mars Data \cite{xiao2021kernel} is a Martian rock segmentation dataset built usi
 
         \label{fig:rockb_martian_example}
     \end{subfigure}
-\caption{Examples martian images with corresponding segmentation masks}
+\caption{Examples Martian images with corresponding segmentation masks}
 \label{fig:martian_dataset_examples}
 \end{figure}
 
 \section{Tools}
+\label{sec:chapter2.2}
 In this section, the most important tools which were used for data pipeline construction are presented, along with a short description. This presentation consists of modules, languages and platforms used during the execution of the project.
 
 % Nie jestem też pewien co do tych nazw tutaj, dawać texttt czy coś podobnego?
@@ -611,7 +622,8 @@ The most important Python modules used in the project are:
 \end{itemize}
 
 \section{Image Segmentation}
-The problem of image segmentation has been inseparable from the field of computer vision since the early days, as it is an essential component of visual understanding systems. It involves partitioning images into multiple images and segments and has multiple applications, including medical image analysis, augmented reality and autonomous vehicles.
+\label{sec:chapter2.3}
+The problem of image segmentation has been inseparable from the field of computer vision since the early days, as it is an essential component of visual understanding systems. It involves partitioning images into multiple images and segments and has multiple applications, including medical image analysis, augmented reality and autonomous vehicles. This section is an overview of what methods can be applied to the problem of segmentation. % Tutaj też coś dalej na temat tego jakie są wykorzystywane i po co taki rozdział jest
 
 Image segmentation can be formulated as a problem of assigning every pixel of an input image to a semantic label semantic segmentation) or partitioning of individual objects (instance segmentation). It is generally more demanding than image classification, which predicts a single label for the entire image. Different image segmentation algorithms have been proposed in the literature, with the earliest methods being thresholding \cite{otsu1979threshold}, region-growing \cite{nock2004statistical}, k-mean clustering \cite{dhanachandra2015image} to more sophisticated methods such as active contours \cite{kass1988snakes}, conditional and Markov random fields \cite{plath2009multi}, and sparsity-based methods \cite{starck2005image}. A paradigm shift in the field has been caused by deep learning models, raising a new generation of segmentation models with unprecedented performance improvements, achieving the highest accuracy rates on popular benchmarks.
 
@@ -625,96 +637,98 @@ Some of the deep learning architectures used for semantic segmentation are: % Tu
 \begin{itemize}
     % Tutaj może też by się dało coś jeszcze napisać
     % dodatkowo możnaby podkreślić nieco nazwę tych architektur ale nie mam pomysłu jak na ten moment
-    \item Fully Convolutional Models (FCNs), proposed by Long \textit{et al.} \cite{long2015fully}, are made out of only convolutional layers, enabling the output segmentation maps to be the same size as the input image. FCNs can achieve state-of-the-art performance but are computationally too expensive for real-time inference.
+    \item \textbf{Fully Convolutional Models (FCNs)}, proposed by Long \textit{et al.} \cite{long2015fully}, are made out of only convolutional layers. Enabling the output segmentation maps to be the same size as the input image is possible using skip connections in which feature maps are up-sampled from the final layer and fused with feature maps from previous layers. FCNs can achieve state-of-the-art performance but are computationally too expensive for real-time inference and is not easily generalizable to 3D images.
 
-    \item Encoder-decoder architecture, used by some of the most popular deep learning-based algorithms. Semantic segmentation based on deconvolution was introduced by Noh \textit{et al.} in \cite{noh2015learning}, where a model is made up of two parts, an encoder using convolutional layers adopted from the VGG network and a deconvolutional network that generates class predictions for every pixel of the input image. The limitation of this architecture is that the fine-grained image information is lost during the encoding process. This issue was addressed in later models, which maintain the resolution by connecting the convolution streams in parallel and repeatedly exchanging information across resolutions.
-    % Tutaj dalej opisać jeszcze o Unecie oraz pozostałych architekturach
+    \item \textbf{Encoder-decoder} architecture, used by some of the most popular deep learning-based algorithms. Semantic segmentation based on deconvolution was introduced by Noh \textit{et al.} in \cite{noh2015learning}, where a model is made up of two parts, an encoder using convolutional layers adopted from the VGG network and a deconvolutional network that generates class predictions for every pixel of the input image. The limitation of this architecture is that the fine-grained image information is lost during the encoding process. This issue was addressed in later models, which maintain the resolution by connecting the convolution streams in parallel and repeatedly exchanging information across resolutions.
+
+    \item \textbf{U-Net} architecture, proposed in 2015 by Ronneberger \textit{et al.} \cite{ronneberger2015u}, follows similar architectural principles as encoder-decoder architecture, where the encoder path captures the context and the symmetrical decoder part enables for precise location of objects in the input image. To combat the information loss during the decoding process, U-Net architecture is extended using skip connections from the encoder block layers to their symmetric counterparts in the decoder block. This procedure enables detail preservation and consideration of different abstraction levels. This architecture was initially created for medical image segmentation but was proven to excel in different domains. Additionally, this architecture can be generalized for use with 3D images.
+
+    \item \textbf{Multiscale based} architecture employs multiscale analysis. One of the most notable models using this architecture is the Feature Pyramid Network (FPN) proposed by Lin \textit{et al.} \cite{lin2017feature}, which was initially developed for object detection, but is also applicable for image segmentation. In this architecture, a feature pyramid is constructed using an inherent multiscale pyramidal hierarchy of deep CNNs. The FPN is composed of bottom-up and top-down pathways and lateral connections in order to merge low and high-resolution features.
+
+    \item \textbf{Pyramid network based} architecture was developed by Zhao \textit{et atl.} \cite{zhao2017pyramid} better to learn the global context representation of a scene. A residual network is used as a feature extractor to extract multiple patterns from the input image. These feature maps are then passed into a pyramid pooling module to distinguish different scales of patterns. The outputs of the pyramid levels are then up-sampled and connected with the initial feature maps to capture the global and local information. To generate pixel-wise predictions, a convolutional layer is used.
+
+% Chyba wystarczy do tej sekcji ale można by tu jeszcze coś napisać
 \end{itemize}
 
 
-% ====================================================
+These are not all deep neural network architectures used for semantic segmentation. However, the listed architectures are already widely used and have proven to produce high-quality results. They will also be used in this project for rock segmentation.
+
+\section{Edge deep learning}
+\label{sec:chapter2.4}
+
+The state-of-the-art deep learning algorithms have proven to be capable of solving complex problems and are now used in a wide range of services and applications. Nonetheless, these algorithms require the availability of high-performance hardware with a large amount of storage\cite{najafabadi2015deep}. The preferred way for running machine learning models has been \emph{cloud computing}, realised using data centres with huge amounts of space and computational resources.
+
+However, with the increasing number of devices with limited resources using machine learning algorithms to make predictions, the available bandwidth has become a bottleneck. Additionally, more latency-constrained devices have begun to use deep-learning models, such as autonomous vehicles \cite{grigorescu2020survey}. The limitations of limited resource devices lead to the creation of a new paradigm called \emph{edge computing}, bringing the calculation as locally as possible. As edge devices have limited computational resources, machine learning algorithms must be especially suited for constrained execution. It is also possible because the inference phase requires significantly fewer resources than the training phase. The paradigm of using highly efficient and accurate deep learning methods in low-power hardware-constrained devices can also be applied to challenging space exploration problems. % Tutaj jeszcze nie jestem pewine tego zdania, może się albo zmienić albo coś jeszcze można dopisać
+
+Usually, the design of deep learning models is oriented towards achieving the best accuracy. However, when other metrics are considered, such as performance, cost or energy, more accurate models are not necessarily better \cite{vestias2020moving}. When considering the number of parameters, a small decrease in accuracy is acceptable in exchange for a significant reduction. Fewer network parameters mean less memory is used, and the inference time is reduced. Apart from designing edge-oriented architectures, several optimization techniques exist for reducing the number of parameters of already existing models in exchange for a minor reduction in accuracy. The two main classes of optimizations are data quantization and data reduction.
+
+Data quantization methods reduce the complexity of operations and the number of bits representing parameters. Typically, model weights are stored inside \texttt{float32} variables. The hardware implementation is more complex for floating-point arithmetics than for fixed-point or integer, as the amount of bits representing data determines the complexity of operations. The post-quantization technique reduces the variables storing weights from 32 bits to 16 or 8 bits, obtaining models 2 to 4 times smaller. The authors of \cite{gysel2016hardware} show that using 8 bit variables for parameters has a neglectable accuracy impact. Representations of models with 16 or 8 bits also considerably reduce the complexity of operations.
+
+Another optimization method is data reduction, decreasing the number of parameters to reduce memory storage, memory bandwidth requirements and the number of computations. The first data reduction approach has been proposed by Han \textit{et al.} in \cite{han2015deep}, which consists of pruning and compression with Huffman coding. Pruning is the process of removing network connections, which introduces sparsity into the matrix of weights. Although it reduces the number of connections, it also results in irregular access to on-chip memory. In models based on convolutional layers, it is possible to use the Winograd filtering technique \cite{winograd1980arithmetic} to calculate convolutions \cite{lavin2016fast}, reducing the number of multiplications.
+
+% TODO: tutaj może jeszcze jakieś podsumowanie tej sekcji
+
+%Tak w sumie to średnio jestem przekonany czy taka sekcja powinna tutaj być
+\section{Data pipeline}
+Considering all of the techniques mentioned above, combining deep learning algorithms with optimization is possible to obtain an efficient and accurate algorithm for rock segmentation. The steps of this process are as follows:
+\begin{enumerate}
+    \item loading the data
+    \item splitting the data into train, validation and test sets
+    \item training the model o choice
+    \item measuring the performance of the trained model
+    \item adjusting the model accordingly to the obtained metrics
+\end{enumerate}
+
+\section{Model evaluation metrics}
+%Taka sekcja też musi być, nie wiem tylko czy tutaj czy w następnym rozdziale
+
+% może tutaj jakieś podsumowanie całego rozdziału
+\chapter{Obtained results}
+\label{sec:chapter3}
+%Tutaj jeszcze spoko będzie parę słów wprowadzenia
+
+\section{Project overview}
+\label{sec:chapter3.1}
+The Artificial Lunar Landscape data set, along with the render images, also provides two types of ground truth sets, one with every rock on the scene marked and the other cleaned by authors. Unfortunately, the cleaned set does not cover all rocks important to the scene. Therefore, manual cleaning has to be performed while reading the ground truth images. As the authors suggest a colour threshold between 50 to 200, the threshold has been chosen to be 100 in order to preserve all important information on the scene and filter out noise from distant rocks. The RGB values from ground images are then clipped to correspond to numerical labels.  %tutaj może jakiś przykład jak to wygląda będzie git
+
+
+In order to fit within the memory of the graphical processing unit, the input images were rescaled to a resolution of $320 \times 320$ pixels and the batch size was set to 16. The whole input set was divided so that the test and validation sets contained 1000 images, and the rest was put into the training set. To further enhance the models' ability to generalize, data augmentation using the \texttt{imgaug} module has been introduced on training and validation sets, consisting of vertical and horizontal flipping in 50\% of inputs, cropping 10\% of image and changing linear contrast.
+
+% Zdaję sobię sprawę że ten akapit może być trochę niejasny i zagmatwany
+The algorithms are created using the \texttt{segmentation models} library, allowing for combining all available encoders and architectures. All encoders available in this library are also pre-trained on the ImageNet data set for faster convergence. The \texttt{segmentation models} library is used with the \texttt{TensorFlow} library as a back end. The parameters of the network were automatically logged during training, using \texttt{MLflow} library. During training, the \texttt{Adam} optimizer is used along with dice loss. A callback is set using the \texttt{Keras} library for early stopping when the validation loss stops improving over five epochs; then, the best weights are restored.
+% To chyba tyle, potem opisać jaka architekura i jakie enkodery zostały wybrane na początek i dlaczego, ale to może być też w następnej sekcji
+
+\section{Initial results}
+\label{sec:chapter3.2}
+
+% % TODO
+% \chapter{Requirements and tools}
+
 % \begin{itemize}
-% \item  problem analysis
-% \item state of the art, problem statement
-% \item  literature research (all sources in the thesis have to be referenced \cite{bib:article,bib:book,bib:conference,bib:internet})
-% \item description of existing solutions (also scientific ones, if the problem is scientifically researched), algorithms,  location of the thesis in the scientific domain
+% \item functional and nonfunctional requirements
+% \item use cases (UML diagrams)
+% \item description of tools
+% \item methodology of design and implementation
+% \end{itemize}
+
+% % TODO
+% \chapter{External specification}
+% \begin{itemize}
+% \item hardware and software requirements
+% \item installation procedure
+% \item activation procedure
+% \item types of users
+% \item user manual
+% \item system administration
+% \item security issues
+% \item example of usage
+% \item working scenarios (with screenshots or output files)
 % \end{itemize}
 
 
-
-% Mathematical formulae
-% \begin{align}
-% y = \frac{\partial x}{\partial t}
-% \end{align}
-% and single math symbols $x$ and $y$ are typeset in the mathematical mode.
-% ====================================================
-
-
-% TODO
-\chapter{Requirements and tools}
-
-\begin{itemize}
-\item functional and nonfunctional requirements
-\item use cases (UML diagrams)
-\item description of tools
-\item methodology of design and implementation
-\end{itemize}
-
-% TODO
-\chapter{External specification}
-\begin{itemize}
-\item hardware and software requirements
-\item installation procedure
-\item activation procedure
-\item types of users
-\item user manual
-\item system administration
-\item security issues
-\item example of usage
-\item working scenarios (with screenshots or output files)
-\end{itemize}
-
-
-
-
-\begin{figure}
-\centering
-\begin{tikzpicture}
-\begin{axis}[
-    y tick label style={
-        /pgf/number format/.cd,
-            fixed,
-            fixed zerofill, % 1.0 zamiast 1
-            precision=1,
-        /tikz/.cd
-    },
-    x tick label style={
-        /pgf/number format/.cd,
-            fixed,
-            fixed zerofill,
-            precision=2,
-        /tikz/.cd
-    }
-]
-\addplot [domain=0.0:0.1] {rnd};
-\end{axis}
-\end{tikzpicture}
-\caption{Figure caption (below the figure).}
-\label{fig:2}
-\end{figure}
-
 %%%%%%%%%%%%%%%%%%%%%
-% FIGURE FROM FILE
-%
-%\begin{figure}
-%\centering
-%\includegraphics[width=0.5\textwidth]{./politechnika_sl_logo_bw_pion_en.pdf}
-%\caption{Caption of a figure is always below the figure.}
-%\label{fig:label}
-%\end{figure}
-%Fig. \ref{fig:label} presents …
-%%%%%%%%%%%%%%%%%%%%%
-%
+
+
 %%%%%%%%%%%%%%%%%%%%
 %% SUBFIGURES
 %
@@ -751,19 +765,19 @@ Some of the deep learning architectures used for semantic segmentation are: % Tu
 %%%%%%%%%%%%%%%%%%%%%
 
 
-% TODO
-\chapter{Internal specification}
+% % TODO
+% \chapter{Internal specification}
 
-\begin{itemize}
-\item concept of the system
-\item system architecture
-\item description of data structures (and data bases)
-\item components, modules, libraries, resume of important classes (if used)
-\item resume of important algorithms (if used)
-\item details of implementation of selected parts
-\item applied design patterns
-\item UML diagrams
-\end{itemize}
+% \begin{itemize}
+% \item concept of the system
+% \item system architecture
+% \item description of data structures (and data bases)
+% \item components, modules, libraries, resume of important classes (if used)
+% \item resume of important algorithms (if used)
+% \item details of implementation of selected parts
+% \item applied design patterns
+% \item UML diagrams
+% \end{itemize}
 
 
 
@@ -775,97 +789,97 @@ Some of the deep learning architectures used for semantic segmentation are: % Tu
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 
-Use special environments for inline code, eg  \lstinline|int a;| (package \texttt{listings})% or  \mintinline{C++}|int a;| (package \texttt{minted})
-. Longer parts of code put in the figure environment, eg. code in Fig. \ref{fig:pseudocode:listings}% and Fig. \ref{fig:pseudocode:minted}
-. Very long listings–move to an appendix.
+% Use special environments for inline code, eg  \lstinline|int a;| (package \texttt{listings})% or  \mintinline{C++}|int a;| (package \texttt{minted})
+% . Longer parts of code put in the figure environment, eg. code in Fig. \ref{fig:pseudocode:listings}% and Fig. \ref{fig:pseudocode:minted}
+% . Very long listings–move to an appendix.
 
 
-\clearpage
-\begin{figure}
-\centering
-\begin{lstlisting}
-class test : public basic
-{
-    public:
-      test (int a);
-      friend std::ostream operator<<(std::ostream & s,
-                                     const test & t);
-    protected:
-      int _a;
+% \clearpage
+% \begin{figure}
+% \centering
+% \begin{lstlisting}
+% class test : public basic
+% {
+%     public:
+%       test (int a);
+%       friend std::ostream operator<<(std::ostream & s,
+%                                      const test & t);
+%     protected:
+%       int _a;
 
-};
-\end{lstlisting}
-\caption{Pseudocode in \texttt{listings}.}
-\label{fig:pseudocode:listings}
-\end{figure}
+% };
+% \end{lstlisting}
+% \caption{Pseudocode in \texttt{listings}.}
+% \label{fig:pseudocode:listings}
+% \end{figure}
 
-%\begin{figure}
-%\centering
-%\begin{minted}[linenos,frame=lines]{c++}
-%class test : public basic
-%{
-%    public:
-%      test (int a);
-%      friend std::ostream operator<<(std::ostream & s,
-%                                     const test & t);
-%    protected:
-%      int _a;
-%
-%};
-%\end{minted}
-%\caption{Pseudocode in \texttt{minted}.}
-%\label{fig:pseudocode:minted}
-%\end{figure}
-
-
-
-
-% TODO
-\chapter{Verification and validation}
-\begin{itemize}
-\item testing paradigm (eg V model)
-\item test cases, testing scope (full / partial)
-\item detected and fixed bugs
-\item results of experiments (optional)
-\end{itemize}
-
-
-\begin{table}
-\centering
-\caption{A caption of a table is \textbf{above} it.}
-\label{id:tab:wyniki}
-\begin{tabular}{rrrrrrrr}
-\toprule
-	         &                                     \multicolumn{7}{c}{method}                                      \\
-	         \cmidrule{2-8}
-	         &         &         &        \multicolumn{3}{c}{alg. 3}        & \multicolumn{2}{c}{alg. 4, $\gamma = 2$} \\
-	         \cmidrule(r){4-6}\cmidrule(r){7-8}
-	$\zeta$ &     alg. 1 &   alg. 2 & $\alpha= 1.5$ & $\alpha= 2$ & $\alpha= 3$ &   $\beta = 0.1$  &   $\beta = -0.1$ \\
-\midrule
-	       0 &  8.3250 & 1.45305 &       7.5791 &    14.8517 &    20.0028 & 1.16396 &                       1.1365 \\
-	       5 &  0.6111 & 2.27126 &       6.9952 &    13.8560 &    18.6064 & 1.18659 &                       1.1630 \\
-	      10 & 11.6126 & 2.69218 &       6.2520 &    12.5202 &    16.8278 & 1.23180 &                       1.2045 \\
-	      15 &  0.5665 & 2.95046 &       5.7753 &    11.4588 &    15.4837 & 1.25131 &                       1.2614 \\
-	      20 & 15.8728 & 3.07225 &       5.3071 &    10.3935 &    13.8738 & 1.25307 &                       1.2217 \\
-	      25 &  0.9791 & 3.19034 &       5.4575 &     9.9533 &    13.0721 & 1.27104 &                       1.2640 \\
-	      30 &  2.0228 & 3.27474 &       5.7461 &     9.7164 &    12.2637 & 1.33404 &                       1.3209 \\
-	      35 & 13.4210 & 3.36086 &       6.6735 &    10.0442 &    12.0270 & 1.35385 &                       1.3059 \\
-	      40 & 13.2226 & 3.36420 &       7.7248 &    10.4495 &    12.0379 & 1.34919 &                       1.2768 \\
-	      45 & 12.8445 & 3.47436 &       8.5539 &    10.8552 &    12.2773 & 1.42303 &                       1.4362 \\
-	      50 & 12.9245 & 3.58228 &       9.2702 &    11.2183 &    12.3990 & 1.40922 &                       1.3724 \\
-\bottomrule
-\end{tabular}
-\end{table}
+% %\begin{figure}
+% %\centering
+% %\begin{minted}[linenos,frame=lines]{c++}
+% %class test : public basic
+% %{
+% %    public:
+% %      test (int a);
+% %      friend std::ostream operator<<(std::ostream & s,
+% %                                     const test & t);
+% %    protected:
+% %      int _a;
+% %
+% %};
+% %\end{minted}
+% %\caption{Pseudocode in \texttt{minted}.}
+% %\label{fig:pseudocode:minted}
+% %\end{figure}
 
 
 
-% TODO
-\chapter{Conclusions}
-\begin{itemize}
-\item achieved results with regard to objectives of the thesis and requirements
-\item path of further development (eg functional extension …)
-\item encountered difficulties and problems
-\end{itemize}
+
+% % TODO
+% \chapter{Verification and validation}
+% \begin{itemize}
+% \item testing paradigm (eg V model)
+% \item test cases, testing scope (full / partial)
+% \item detected and fixed bugs
+% \item results of experiments (optional)
+% \end{itemize}
+
+
+% \begin{table}
+% \centering
+% \caption{A caption of a table is \textbf{above} it.}
+% \label{id:tab:wyniki}
+% \begin{tabular}{rrrrrrrr}
+% \toprule
+% 	         &                                     \multicolumn{7}{c}{method}                                      \\
+% 	         \cmidrule{2-8}
+% 	         &         &         &        \multicolumn{3}{c}{alg. 3}        & \multicolumn{2}{c}{alg. 4, $\gamma = 2$} \\
+% 	         \cmidrule(r){4-6}\cmidrule(r){7-8}
+% 	$\zeta$ &     alg. 1 &   alg. 2 & $\alpha= 1.5$ & $\alpha= 2$ & $\alpha= 3$ &   $\beta = 0.1$  &   $\beta = -0.1$ \\
+% \midrule
+% 	       0 &  8.3250 & 1.45305 &       7.5791 &    14.8517 &    20.0028 & 1.16396 &                       1.1365 \\
+% 	       5 &  0.6111 & 2.27126 &       6.9952 &    13.8560 &    18.6064 & 1.18659 &                       1.1630 \\
+% 	      10 & 11.6126 & 2.69218 &       6.2520 &    12.5202 &    16.8278 & 1.23180 &                       1.2045 \\
+% 	      15 &  0.5665 & 2.95046 &       5.7753 &    11.4588 &    15.4837 & 1.25131 &                       1.2614 \\
+% 	      20 & 15.8728 & 3.07225 &       5.3071 &    10.3935 &    13.8738 & 1.25307 &                       1.2217 \\
+% 	      25 &  0.9791 & 3.19034 &       5.4575 &     9.9533 &    13.0721 & 1.27104 &                       1.2640 \\
+% 	      30 &  2.0228 & 3.27474 &       5.7461 &     9.7164 &    12.2637 & 1.33404 &                       1.3209 \\
+% 	      35 & 13.4210 & 3.36086 &       6.6735 &    10.0442 &    12.0270 & 1.35385 &                       1.3059 \\
+% 	      40 & 13.2226 & 3.36420 &       7.7248 &    10.4495 &    12.0379 & 1.34919 &                       1.2768 \\
+% 	      45 & 12.8445 & 3.47436 &       8.5539 &    10.8552 &    12.2773 & 1.42303 &                       1.4362 \\
+% 	      50 & 12.9245 & 3.58228 &       9.2702 &    11.2183 &    12.3990 & 1.40922 &                       1.3724 \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+
+
+
+% % TODO
+% \chapter{Conclusions}
+% \begin{itemize}
+% \item achieved results with regard to objectives of the thesis and requirements
+% \item path of further development (eg functional extension …)
+% \item encountered difficulties and problems
+% \end{itemize}
 
 
 
